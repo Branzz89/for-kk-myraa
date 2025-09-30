@@ -3,454 +3,856 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Kamu yang Spesial</title>
+    <title>Portfolio | Professional Works</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
         }
 
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #5a3d3d;
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
         .container {
-            width: 90%;
-            max-width: 800px;
-            height: 600px;
-            perspective: 1000px;
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .slider {
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
             width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 1000;
         }
 
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+        nav {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            backface-visibility: hidden;
-            transition: transform 0.5s ease;
         }
 
-        .slide h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #e84393;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
         }
 
-        .slide p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .heart {
-            color: #e84393;
-            font-size: 3rem;
-            margin: 20px 0;
-            animation: heartbeat 1.5s ease infinite;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
-            background: linear-gradient(to right, #e84393, #fd79a8);
+            display: inline-block;
+            background-color: var(--accent);
             color: white;
-            border: none;
             padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
+            background-color: #2980b9;
+            transform: translateY(-2px);
         }
 
-        .navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            margin-left: 10px;
         }
 
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn.active {
-            background: #e84393;
-            transform: scale(1.3);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, #e84393, #fd79a8);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .photo-frame {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 20px auto;
-            border: 8px solid #fd79a8;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .photo-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #fd79a8, #e84393);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .btn-outline:hover {
+            background-color: var(--accent);
             color: white;
-            font-size: 4rem;
         }
 
-        .message-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #fd79a8;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-size: 1rem;
-            resize: none;
-            height: 120px;
+        /* Section Styling */
+        section {
+            padding: 100px 0;
         }
 
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
             width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            background-color: var(--accent);
+            border-radius: 4px;
         }
 
-        .floating-heart {
-            position: absolute;
-            color: rgba(232, 67, 147, 0.3);
-            font-size: 20px;
-            animation: float 15s linear infinite;
-            bottom: -50px;
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .music-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.8);
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            background-color: #e9ecef;
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            background-color: var(--accent);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 100;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .contact-details p {
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about p {
+            margin-top: 20px;
+            color: #bdc3c7;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .container {
-                height: 500px;
+            .nav-links {
+                display: none;
             }
             
-            .slide h1 {
-                font-size: 2rem;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             
-            .slide p {
-                font-size: 1rem;
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            section {
+                padding: 80px 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="floating-hearts" id="hearts-container"></div>
-    
-    <div class="music-toggle" id="musicToggle">
-        <i class="fas fa-music"></i>
-    </div>
-    
-    <div class="container">
-        <div class="slider" id="slider">
-            <!-- Slide 1 -->
-            <div class="slide active">
-                <div class="heart">
-                    <i class="fas fa-heart"></i>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Portfolio.</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Creative Developer & Designer</h1>
+                <p>Saya mengkhususkan diri dalam menciptakan pengalaman digital yang intuitif dan menarik dengan fokus pada desain yang bersih dan fungsionalitas yang optimal.</p>
+                <div>
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
                 </div>
-                <h1>Halo Sayangku!</h1>
-                <p>Aku buatkan website ini khusus untuk kamu, karena kamu sangat spesial di hatiku. Scroll untuk melihat pesan-pesanku ya!</p>
-                <button class="btn" onclick="nextSlide()">Mulai Petualangan Cinta <i class="fas fa-arrow-right"></i></button>
             </div>
-            
-            <!-- Slide 2 -->
-            <div class="slide">
-                <div class="photo-frame">
-                    <div class="photo-placeholder">
-                        <i class="fas fa-user"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Sebuah perkenalan singkat tentang latar belakang dan passion saya dalam dunia teknologi.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Placeholder for image -->
+                    <div style="width:100%;height:400px;background:#e9ecef;display:flex;align-items:center;justify-content:center;color:#7f8c8d;">
+                        <i class="fas fa-user" style="font-size: 5rem;"></i>
                     </div>
                 </div>
-                <h1>Kamu adalah...</h1>
-                <p>Orang yang selalu membuat hariku cerah. Senyummu adalah matahari yang menghangatkan hari-hariku. Setiap detik bersamamu adalah anugerah.</p>
-                <div class="heart">
-                    <i class="fas fa-star"></i>
+                <div class="about-text">
+                    <h3>Menciptakan Solusi Digital yang Berpengaruh</h3>
+                    <p>Saya adalah seorang developer dengan pengalaman lebih dari 3 tahun dalam menciptakan aplikasi web dan mobile. Fokus saya adalah pada pengembangan front-end yang responsif dan user-friendly.</p>
+                    <p>Dengan latar belakang dalam desain dan pemrograman, saya mampu menjembatani kesenjangan antara konsep kreatif dan implementasi teknis, menghasilkan produk yang tidak hanya indah tetapi juga fungsional.</p>
+                    <p>Saya percaya pada pendekatan kolaboratif dan selalu berusaha untuk tetap terdepan dengan tren dan teknologi terbaru dalam industri.</p>
+                    <a href="#contact" class="btn">Hire Me</a>
                 </div>
-            </div>
-            
-            <!-- Slide 3 -->
-            <div class="slide">
-                <h1>Alasan Aku Mencintaimu</h1>
-                <p>1. Kamu selalu membuatku tersenyum bahkan di hari terburukku<br>
-                   2. Cara kamu peduli pada orang lain membuatku kagum<br>
-                   3. Kamu menerima aku apa adanya<br>
-                   4. Setiap hal kecil yang kamu lakukan berarti bagiku</p>
-                <div class="heart">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-            </div>
-            
-            <!-- Slide 4 -->
-            <div class="slide">
-                <h1>Kenangan Indah Kita</h1>
-                <p>Ingat pertama kali kita ketemu? Aku langsung merasa ada sesuatu yang spesial tentang kamu. Dan setiap momen bersamamu sejak itu hanya membuat perasaanku semakin kuat.</p>
-                <div class="heart">
-                    <i class="fas fa-memory"></i>
-                </div>
-                <button class="btn" onclick="createHearts(20)">Kirim Cinta <i class="fas fa-heart"></i></button>
-            </div>
-            
-            <!-- Slide 5 -->
-            <div class="slide">
-                <h1>Pesan dari Hatiku</h1>
-                <textarea class="message-input" placeholder="Tulis pesan cinta untuk doi di sini...">Aku bersyukur sekali memiliki kamu dalam hidupku. Kamu adalah jawaban dari semua doaku. Aku berjanji akan selalu menyayangimu dan membuatmu bahagia. I love you more than words can say! ❤️</textarea>
-                <button class="btn" onclick="sendLove()">Kirim Pesan Cinta <i class="fas fa-paper-plane"></i></button>
-            </div>
-            
-            <!-- Slide 6 -->
-            <div class="slide">
-                <h1>Terima Kasih</h1>
-                <p>Terima kasih sudah menjadi bagian dari hidupku. Aku tidak bisa membayangkan hidup tanpamu. Kamu adalah segalanya bagiku.</p>
-                <div class="heart">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <p>Aku sayang kamu sampai akhir waktu ❤️</p>
-                <button class="btn" onclick="firstSlide()">Lihat Lagi dari Awal <i class="fas fa-redo"></i></button>
             </div>
         </div>
-        
-        <div class="navigation">
-            <span class="nav-btn active" onclick="goToSlide(0)"></span>
-            <span class="nav-btn" onclick="goToSlide(1)"></span>
-            <span class="nav-btn" onclick="goToSlide(2)"></span>
-            <span class="nav-btn" onclick="goToSlide(3)"></span>
-            <span class="nav-btn" onclick="goToSlide(4)"></span>
-            <span class="nav-btn" onclick="goToSlide(5)"></span>
-        </div>
-        
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-    </div>
+    </section>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <p>Berbagai teknologi dan alat yang saya kuasai untuk menciptakan solusi digital yang efektif.</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Vue.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Database Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Design & Tools</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Figma</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Creative Suite</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git & Version Control</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Beberapa project terpilih yang menunjukkan kemampuan dan pendekatan saya dalam menyelesaikan masalah.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Platform e-commerce lengkap dengan sistem pembayaran, manajemen inventaris, dan dashboard analitik.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Health & Fitness App</h3>
+                        <p>Aplikasi mobile untuk melacak aktivitas kebugaran, pola makan, dan progress kesehatan pengguna.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Redux</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Visualization Dashboard</h3>
+                        <p>Dashboard interaktif untuk visualisasi data kompleks dengan grafik dan laporan real-time.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">D3.js</span>
+                            <span class="project-tag">Express</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Saya selalu terbuka untuk diskusi tentang project baru, kolaborasi, atau sekadar berbagi ide.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>hello@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Mon - Fri: 9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Portfolio.</h3>
+                    <p>Sebuah portfolio profesional yang menampilkan karya, keterampilan, dan pengalaman dalam pengembangan web dan desain.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Me</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Inisialisasi variabel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const progress = document.getElementById('progress');
-        const slider = document.getElementById('slider');
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        const heartsContainer = document.getElementById('hearts-container');
-        let isPlaying = false;
-        
-        // Fungsi untuk berpindah slide
-        function goToSlide(n) {
-            currentSlide = n;
-            updateSlider();
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSlider();
-        }
-        
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateSlider();
-        }
-        
-        function firstSlide() {
-            currentSlide = 0;
-            updateSlider();
-        }
-        
-        // Update tampilan slider
-        function updateSlider() {
-            // Update posisi slider
-            slider.style.transform = `translateZ(-100px) rotateY(${currentSlide * -60}deg)`;
-            
-            // Update navigasi
-            navBtns.forEach((btn, index) => {
-                btn.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Update progress bar
-            progress.style.width = `${(currentSlide + 1) / slides.length * 100}%`;
-        }
-        
-        // Fungsi untuk musik latar
-        musicToggle.addEventListener('click', function() {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-            } else {
-                bgMusic.play();
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        });
-        
-        // Fungsi untuk membuat hati berjatuhan
-        function createHearts(count) {
-            for (let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
-                    heart.innerHTML = '<i class="fas fa-heart"></i>';
-                    heart.style.left = `${Math.random() * 100}%`;
-                    heart.style.animationDuration = `${15 + Math.random() * 10}s`;
-                    heart.style.fontSize = `${15 + Math.random() * 20}px`;
-                    
-                    heartsContainer.appendChild(heart);
-                    
-                    // Hapus hati setelah animasi selesai
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 25000);
-                }, i * 200);
-            }
-        }
-        
-        // Fungsi untuk mengirim pesan cinta
-        function sendLove() {
-            alert('Pesan cintamu telah terkirim! ❤️ Doi pasti sangat senang menerimanya.');
-            createHearts(15);
-        }
-        
-        // Event listener untuk navigasi dengan keyboard
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-            }
-        });
-        
-        // Event listener untuk swipe di perangkat mobile
-        let startX = 0;
-        document.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        
-        document.addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
             }
         });
-        
-        // Buat hati berjatuhan secara acak
-        setInterval(() => {
-            if (Math.random() > 0.7) {
-                createHearts(1);
-            }
-        }, 3000);
-        
-        // Inisialisasi
-        createHearts(5);
-        updateSlider();
     </script>
 </body>
 </html>
